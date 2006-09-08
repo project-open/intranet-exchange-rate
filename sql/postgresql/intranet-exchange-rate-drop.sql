@@ -11,3 +11,6 @@
 drop function im_exchange_rate (date, char(3), char(3));
 drop table im_exchange_rates;
 
+select im_component_plugin__del_module('intranet-exchange-rate');
+select im_menu__del_module('intranet-exchange-rate');
+
