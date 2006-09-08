@@ -8,3 +8,9 @@
 
 <formtemplate id="exchange_rates"></formtemplate>
 
+<blockquote>
+<b>Please Note</b>:<br>
+Adding the latest exchange rate can take several minutes
+because the system will update the default exchange rates
+for the next few years. So please don't interrupt the process.
+</blockquote>

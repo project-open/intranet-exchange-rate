@@ -88,15 +88,15 @@ ad_form -extend -name $form_id -on_request {
     foreach currency $supported_currencies {
 	set rate_name "${currency}_rate"
 	set rate_value [expr $$rate_name]
-	if {"" != $rate_value} {
 
-	    db_dml delete_entry "
+	db_dml delete_entry "
 		delete from im_exchange_rates
 		where
 			day = to_date(:today, 'YYYY-MM-DD')
 			and currency = :currency
-	    "
+	"
 
+	if {"" != $rate_value} {
 	    db_dml update_rates "
 		insert into im_exchange_rates (
 			day,
@@ -111,6 +111,10 @@ ad_form -extend -name $form_id -on_request {
 		)
             "
 	}
+
+	im_exec_dml invalidate "im_exchange_rate_invalidate_entries (to_date(:today, 'YYYY-MM-DD'), :currency)"
+	im_exec_dml invalidate "im_exchange_rate_fill_holes()"
+
     }
 
     ad_returnredirect $return_url

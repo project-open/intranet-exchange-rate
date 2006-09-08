@@ -28,6 +28,9 @@ create table im_exchange_rates (
 -- load data from 1999-01-01 until 2005-06-30
 \i intranet-exchange-rate-data.sql
 
+
+
+-- Fills ALL "holes" in the im_exchange_rates table.
 -- Populate im_exchange_rates for the next 5 years
 create or replace function im_exchange_rate_fill_holes ()
 returns integer as '
@@ -83,7 +86,52 @@ BEGIN
     END LOOP;
     return 0;
 end;' language 'plpgsql';
-select im_exchange_rate_fill_holes ();
+-- select im_exchange_rate_fill_holes ();
+
+
+
+-- Deletes all entries AFTER a new entry, until an
+-- entry is found with manual_t = 't'.
+-- This function is useful after adding a new entriy
+-- to delete all those entries that need to be updated.
+create or replace function im_exchange_rate_invalidate_entries (date, char(3))
+returns integer as '
+DECLARE
+    p_date			alias for $1;
+    p_currency			alias for $2;
+
+    v_next_entry_date		date;
+    v_max			integer;
+    v_start_date		date;
+    v_rate			numeric;
+    row				RECORD;
+    row2			RECORD;
+BEGIN
+    v_start_date := to_date(''1999-01-01'', ''YYYY-MM-DD'');
+    v_max := 365 * 10;
+
+    select	min(day)
+    into	v_next_entry_date
+    from	im_exchange_rates
+    where	day > p_date
+		and manual_p = ''t''
+		and currency = p_currency;
+
+    IF v_next_entry_date is NULL THEN
+	v_next_entry_date := v_start_date + v_max;
+    END IF;
+
+    -- Delete entries between current date and v_next_entry_date-1
+    delete
+    from	im_exchange_rates
+    where	currency = p_currency
+		and day < v_next_entry_date
+		and day > p_date
+		and manual_p = ''f'';
+
+    return 0;
+end;' language 'plpgsql';
+-- select im_exchange_rate_invalidate_entries ('2005-07-02'::date, 'EUR');
 
 
 
