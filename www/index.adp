@@ -6,4 +6,6 @@
 
 <h2>@page_title@</h2>
 
-<listtemplate name="exchange_rates"></listtemplate>
+@filter_html;noquote@
+@table;noquote@
+

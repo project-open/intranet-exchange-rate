@@ -29,49 +29,62 @@ create table im_exchange_rates (
 \i intranet-exchange-rate-data.sql
 
 -- Populate im_exchange_rates for the next 5 years
-create or replace function inline_0 ()
+create or replace function im_exchange_rate_fill_holes ()
 returns integer as '
 DECLARE
     v_max			integer;
-    v_i				integer;
-    v_first_block_of_month      integer;
+    v_start_date		date;
     v_rate			numeric;
     row				RECORD;
+    row2			RECORD;
 BEGIN
-    v_max := 365 * 5;
+    v_start_date := to_date(''1999-01-01'', ''YYYY-MM-DD'');
+    v_max := 365 * 10;
+    -- Loop for all currencies. Well need the currency later fixed.
     FOR row IN
         select	iso as currency
 	from	currency_codes
 	where	supported_p = ''t''
     LOOP
-	-- get the latest manually entered exchange rate
-	select	rate
-	into	v_rate
-	from	im_exchange_rates 
-	where	day = (
-			select max(day) 
-			from im_exchange_rates 
-			where currency = row.currency
-		)
-		and manual_p = ''t''
-		and currency = row.currency;
-
-	-- use the latest exchange rate for the next few years...
-	FOR v_i IN 0..v_max-1 LOOP
-	
+	    RAISE NOTICE ''im_exchange_rate_fill_holes: cur=%'', row.currency;
+	    -- Loop through all dates and check if there
+	    -- is a hole (no entry for a date)
+	    FOR row2 IN
+		select	im_day_enumerator as day
+		from	im_day_enumerator(v_start_date, v_start_date + v_max)
+			LEFT OUTER JOIN (
+				select	*
+				from	im_exchange_rates 
+				where	currency = row.currency
+			) ex on (im_day_enumerator = ex.day)
+		where	ex.rate is null
+	    LOOP
+		-- RAISE NOTICE ''im_exchange_rate_fill_holes: day=%'', row2.day;
+		-- get the latest manually entered exchange rate
+		select	rate
+		into	v_rate
+		from	im_exchange_rates 
+		where	day = (
+				select	max(day) 
+				from	im_exchange_rates 
+				where	day < row2.day
+					and currency = row.currency
+					and manual_p = ''t''
+			      )
+			and currency = row.currency;
+		-- RAISE NOTICE ''im_exchange_rate_fill_holes: rate=%'', v_rate;
+		-- use the latest exchange rate for the next few years...
 		insert into im_exchange_rates (
 			day, rate, currency, manual_p
 		) values (
-			to_date(''2005-07-01'',''YYYY-MM-DD'') + v_i,
-			v_rate, row.currency, ''f''		
+			row2.day, v_rate, row.currency, ''f''		
 		);
-
-	END LOOP;
+	    END LOOP;	
     END LOOP;
     return 0;
 end;' language 'plpgsql';
-select inline_0 ();
-drop function inline_0 ();
+select im_exchange_rate_fill_holes ();
+
 
 
 -- shortcut function to calculate the exchange rate for a
@@ -145,7 +158,7 @@ BEGIN
 	''intranet-exchange-rate'',  -- package_name
 	''admin_exchange_rates'',    -- label
 	''Exchange Rates'',	-- name
-	''/intranet-exchange-rate/'',   -- url
+	''/intranet-exchange-rate/index'',   -- url
 	80,			-- sort_order
 	v_admin_menu,		-- parent_menu_id
 	null			-- p_visible_tcl
@@ -193,7 +206,7 @@ BEGIN
 	''intranet-exchange-rate'',  -- package_name
 	''finance_exchange_rates'',    -- label
 	''Exchange Rates'',	-- name
-	''/intranet-exchange-rate/'',   -- url
+	''/intranet-exchange-rate/index'',   -- url
 	80,			-- sort_order
 	v_finance_menu,		-- parent_menu_id
 	null			-- p_visible_tcl

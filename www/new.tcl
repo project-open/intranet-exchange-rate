@@ -15,6 +15,7 @@ ad_page_contract {
 } {
     { form_mode "edit" }
     { today "" }
+    return_url
 }
 
 
@@ -23,13 +24,12 @@ ad_page_contract {
 # ---------------------------------------------------------------
 
 set user_id [ad_maybe_redirect_for_registration]
-set page_title "[_ intranet-exchange-rate.Exchange-Rate]"
+set page_title [lang::message::lookup "" intranet-exchange-rate.Exchange_Rate "Exchange Rate"]
 set context_bar [im_context_bar $page_title]
 set page_focus "im_header_form.keywords"
-set return_url [im_url_with_query]
 
 set form_id "exchange_rates"
-set action_url "index"
+set action_url "new"
 
 if {"" == $today} {
     set today [lindex [split [ns_localsqltimestamp] " "] 0]
@@ -63,6 +63,7 @@ ad_form \
 foreach currency $supported_currencies {
     template::element create $form_id "${currency}_rate" \
 	-datatype text \
+	-optional \
 	-widget text \
 	-label $currency \
 	-html {size 10}
@@ -80,22 +81,39 @@ ad_form -extend -name $form_id -on_request {
 		where	currency = :currency
 			and day = to_date(:today, 'YYYY-MM-DD')
 
-	"]
+	" -default ""]
     }
 }  -after_submit {
 
     foreach currency $supported_currencies {
 	set rate_name "${currency}_rate"
+	set rate_value [expr $$rate_name]
+	if {"" != $rate_value} {
 
-	db_dml update_rates "
-		update im_exchange_rates
-		set rate = :$rate_name
+	    db_dml delete_entry "
+		delete from im_exchange_rates
 		where
 			day = to_date(:today, 'YYYY-MM-DD')
 			and currency = :currency
+	    "
 
-        "
+	    db_dml update_rates "
+		insert into im_exchange_rates (
+			day,
+			currency,
+			rate,
+			manual_p
+		) values (
+			to_date(:today, 'YYYY-MM-DD'),
+			:currency,
+			:rate_value,
+			't'
+		)
+            "
+	}
     }
+
+    ad_returnredirect $return_url
 }
 
 
