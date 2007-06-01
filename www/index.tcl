@@ -40,11 +40,7 @@ set form_id "exchange_rates"
 # Build the form
 # ------------------------------------------------------------------
 
-set supported_currencies [im_supported_currencies]
-
 set dimensional_list {
-    {
-	year "Year:" 2006 {
 	    { 1999 "1999" {where "to_char(days.day, 'YYYY') = '1999'"} }
 	    { 2000 "2000" {where "to_char(days.day, 'YYYY') = '2000'"} }
 	    { 2001 "2001" {where "to_char(days.day, 'YYYY') = '2001'"} }
@@ -58,16 +54,13 @@ set dimensional_list {
 	    { 2009 "2009" {where "to_char(days.day, 'YYYY') = '2009'"} }
 	    { 2010 "2010" {where "to_char(days.day, 'YYYY') = '2010'"} }
 	    { all "All" {} }
-	}
-    }
 }
+set dimensional_list [list [list year "Year:" $year $dimensional_list] ]
 
+set supported_currencies [im_supported_currencies]
 set missing_text "<strong>No packages match criteria.</strong>"
-
-set filter_html "<center><table><tr><td>[ad_dimensional $dimensional_list]</td></tr></table></center>"
-
+set filter_html "<table><tr><td>[ad_dimensional $dimensional_list]</td></tr></table>"
 set use_watches_p [expr ! [ad_parameter -package_id [ad_acs_kernel_id] PerformanceModeP request-processor 1]]
-
 set return_url "[ad_conn url]?[ad_conn query]"
 
 set table_def {
