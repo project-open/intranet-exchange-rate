@@ -113,7 +113,7 @@ ad_form -extend -name $form_id -on_request {
 	}
 
 	im_exec_dml invalidate "im_exchange_rate_invalidate_entries (to_date(:today, 'YYYY-MM-DD'), :currency)"
-	im_exec_dml invalidate "im_exchange_rate_fill_holes()"
+	im_exec_dml invalidate "im_exchange_rate_fill_holes(:currency)"
 
     }
 
