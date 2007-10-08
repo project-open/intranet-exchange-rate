@@ -9,7 +9,7 @@
     <singleton-p>t</singleton-p>
     <auto-mount>intranet-exchange-rate</auto-mount>
 
-    <version name="3.3.0.0.0" url="http://projop.dnsalias.com/download/apm/intranet-exchange-rate-3.3.0.0.0.apm">
+    <version name="3.3.1.0.0" url="http://projop.dnsalias.com/download/apm/intranet-exchange-rate-3.3.1.0.0.apm">
 
         <owner url="mailto:frank.bergmann@project-open.com">Frank Bergmann</owner>
         <summary>Allows to maintain and query currency exchange rates</summary>
