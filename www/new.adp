@@ -3,6 +3,7 @@
 <property name="context_bar">@context_bar;noquote@</property>
 <property name="main_navbar_label">home</property>
 <property name="focus">@page_focus;noquote@</property>
+<property name="admin_navbar_label">admin_exchange_rates</property>
 
 <h2>@page_title@</h2>
 
