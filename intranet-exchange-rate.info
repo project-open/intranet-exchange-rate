@@ -22,7 +22,6 @@
 
         <provides url="intranet-exchange-rate" version="3.2.7.0.0"/>
         <requires url="intranet-core" version="3.0.0.0.0"/>
-        <requires url="intranet-cost" version="3.0.0.0.0"/>
 
         <callbacks>
         </callbacks>
