@@ -6,6 +6,21 @@
 
 <!-- <h2>@page_title@</h2> -->
 
+<table>
+<tr>
+<td>
 @filter_html;noquote@
 @table;noquote@
+</td>
+<td>
+</td>
 
+        <table>
+        <tr><td colspan=2>Admin Exchange Rates</td></tr>
+        <tr>
+        <td>xxxxx</td>
+        </tr>
+        </table>
+
+</tr>
+</table>
