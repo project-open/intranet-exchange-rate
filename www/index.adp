@@ -7,6 +7,10 @@
 
 <!-- <h2>@page_title@</h2> -->
 
+<ul>
+<li><a href="get-exchange-rates"><%= [lang::message::lookup "" intranet-exchange-rates.Get_exchange_rates_for_today "Get exchange rates for today"] %>
+</ul>
+
 @filter_html;noquote@
 @table;noquote@
 
