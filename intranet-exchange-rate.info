@@ -26,8 +26,8 @@
         <callbacks>
         </callbacks>
         <parameters>
+            <parameter datatype="string" min_n_values="1" max_n_values="1"  name="ExchangeRateUrlXRates" default="http://www.x-rates.com/d/USD/table.html" description="URL for X-Rates currency table"/>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="MaxDaysOutdated"  default="365" description="Days before system complains about exchange rate updating"/>
         </parameters>
-
     </version>
 </package>
