@@ -10,10 +10,11 @@ ad_page_contract {
     @creation-date 2008-08-04
     @cvs-id $Id$
 } {
-    { currency_url "http://www.x-rates.com/d/USD/table.html"}
 }
 
 set today [lindex [split [ns_localsqltimestamp] " "] 0]
+
+set currency_url [parameter::get_from_package_key -package_key "intranet-exchange-rate" -parameter "ExchangeRateUrlXRates" -default "http://www.x-rates.com/d/USD/table.html"]
 
 # --------------------------------------------------------------------------
 # Get he HTML page

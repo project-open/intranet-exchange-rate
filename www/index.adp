@@ -7,9 +7,20 @@
 
 <!-- <h2>@page_title@</h2> -->
 
-<ul>
-<li><a href="get-exchange-rates"><%= [lang::message::lookup "" intranet-exchange-rates.Get_exchange_rates_for_today "Get exchange rates for today"] %>
-</ul>
+<table>
+<tr class=rowtitle><td class=rowtitle><%= [lang::message::lookup "" intranet-exchange-rate.Admin_Links "Admin Links"] %></td></tr>
+<tr>
+<td>
+
+	<ul>
+	<li><a href="get-exchange-rates"><%= [lang::message::lookup "" intranet-exchange-rate.Get_exchange_rates_for_today "Get exchange rates for today from <br>%currency_url%"] %></a><br></li>
+	<li><a href="active-currencies"><%= [lang::message::lookup "" intranet-exchange-rate.Active_currencies "Manage Active Currencies"] %></a><br></li>
+	</ul>
+</td>
+</tr>
+</table>
+
+<p>&nbsp;</p>
 
 @filter_html;noquote@
 @table;noquote@
