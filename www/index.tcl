@@ -60,6 +60,7 @@ set dimensional_list {
 	    { 2012 "2012" {where "to_char(days.day, 'YYYY') = '2012'"} }
 	    { 2013 "2013" {where "to_char(days.day, 'YYYY') = '2013'"} }
 	    { 2014 "2014" {where "to_char(days.day, 'YYYY') = '2014'"} }
+>           { 2015 "2015" {where "to_char(days.day, 'YYYY') = '2015'"} }
 	    { all "All" {} }
 }
 set dimensional_list [list [list year "Year:" $year $dimensional_list] ]
