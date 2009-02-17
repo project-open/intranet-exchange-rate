@@ -44,8 +44,8 @@ DECLARE
 BEGIN
     RAISE NOTICE ''im_exchange_rate_fill_holes: cur=%'', p_currency;
 
-    v_start_date := to_date(''2004-01-01'', ''YYYY-MM-DD'');
-    v_max := 365 * 10;
+    v_start_date := to_date(''1999-01-01'', ''YYYY-MM-DD'');
+    v_max := 365 * 16;
 
     -- Loop through all dates and check if there
     -- is a hole (no entry for a date)
@@ -118,7 +118,7 @@ DECLARE
     row2			RECORD;
 BEGIN
     v_start_date := to_date(''1999-01-01'', ''YYYY-MM-DD'');
-    v_max := 365 * 10;
+    v_max := 365 * 16;
 
     select	min(day)
     into	v_next_entry_date
