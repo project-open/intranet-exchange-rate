@@ -1,7 +1,7 @@
 -- /packages/intranet-exchange-rate/sql/postgresql/intranet-exchange-rate-data-200507-200608.sql
 --
--- ]project[ Exchange Rate Module
--- Copyright (c) 2003-2006 Project/Open
+-- ]project-open[ Exchange Rate Module
+-- Copyright (c) 2003 - 2009 ]project-open[
 --
 -- All rights reserved. Please check
 -- http://www.project-open.com/license/ for details.
