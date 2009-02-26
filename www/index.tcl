@@ -88,6 +88,27 @@ foreach currency [im_supported_currencies] {
 
 }
 
-doc_body_flush
 set table [ad_table -Torderby $orderby -Tmissing_text $missing_text exchange_rates "" $table_def]
-db_release_unused_handles
+
+# ------------------------------------------------------------------
+# NavBar
+# ------------------------------------------------------------------
+
+set admin_html "
+	<ul>
+	<li><a href='get-exchange-rates'>[lang::message::lookup "" intranet-exchange-rate.Get_exchange_rates_for_today "Get exchange rates for today from <br>%currency_url%"]</a><br></li>
+	<li><a href='active-currencies'>[lang::message::lookup "" intranet-exchange-rate.Active_currencies "Manage Active Currencies"]</a><br></li>
+	</ul>
+"
+
+
+set left_navbar_html "
+      <div class='filter-block'>
+         <div class='filter-title'>
+            [lang::message::lookup "" intranet-exchange-rate.Admin_Links "Admin Links"]
+         </div>
+         $admin_html
+      </div>
+"
+
+
