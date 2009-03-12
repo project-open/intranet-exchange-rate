@@ -96,7 +96,9 @@ set table [ad_table -Torderby $orderby -Tmissing_text $missing_text exchange_rat
 
 set admin_html "
 	<ul>
+<!--
 	<li><a href='get-exchange-rates'>[lang::message::lookup "" intranet-exchange-rate.Get_exchange_rates_for_today "Get exchange rates for today from <br>%currency_url%"]</a><br></li>
+-->
 	<li><a href='active-currencies'>[lang::message::lookup "" intranet-exchange-rate.Active_currencies "Manage Active Currencies"]</a><br></li>
 	</ul>
 "
