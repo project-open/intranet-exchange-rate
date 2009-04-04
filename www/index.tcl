@@ -1,6 +1,6 @@
 # /packages/intranet-exchange-rate/www/index.tcl
 #
-# Copyright (C) 2003-2004 Project/Open
+# Copyright (C) 2003-2008 ]project-open[
 #
 # All rights reserved. Please check
 # http://www.project-open.com/license/ for details.
@@ -53,6 +53,11 @@ set dimensional_list {
 	    { 2008 "2008" {where "to_char(days.day, 'YYYY') = '2008'"} }
 	    { 2009 "2009" {where "to_char(days.day, 'YYYY') = '2009'"} }
 	    { 2010 "2010" {where "to_char(days.day, 'YYYY') = '2010'"} }
+	    { 2011 "2011" {where "to_char(days.day, 'YYYY') = '2011'"} }
+	    { 2012 "2012" {where "to_char(days.day, 'YYYY') = '2012'"} }
+	    { 2013 "2013" {where "to_char(days.day, 'YYYY') = '2013'"} }
+	    { 2014 "2014" {where "to_char(days.day, 'YYYY') = '2014'"} }
+	    { 2015 "2015" {where "to_char(days.day, 'YYYY') = '2015'"} }
 	    { all "All" {} }
 }
 set dimensional_list [list [list year "Year:" $year $dimensional_list] ]

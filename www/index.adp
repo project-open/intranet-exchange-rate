@@ -18,7 +18,7 @@
         <table>
         <tr><td colspan=2>Admin Exchange Rates</td></tr>
         <tr>
-        <td>xxxxx</td>
+        <td></td>
         </tr>
         </table>
 
