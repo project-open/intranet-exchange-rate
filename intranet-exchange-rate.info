@@ -3,8 +3,8 @@
 
 <package key="intranet-exchange-rate" url="http://openacs.org/repository/apm/packages/intranet-exchange-rate" type="apm_application">
     <license>]project-open[ Free License (FL)</license>
-    <package-name>]project-open[ Exchange-Rates</package-name>
-    <pretty-plural>]project-open[ Exchange-Rates</pretty-plural>
+    <package-name>]project-open[ Exchange Rates</package-name>
+    <pretty-plural>]project-open[ Exchange Rates</pretty-plural>
     <initial-install-p>f</initial-install-p>
     <singleton-p>t</singleton-p>
     <auto-mount>intranet-exchange-rate</auto-mount>
