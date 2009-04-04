@@ -13,11 +13,11 @@
 		(select distinct day from im_exchange_rates) days
 		$rate_from
 	where
-		1=1
-		[ad_dimensional_sql $dimensional_list where and]
+		to_char(days.day, 'YYYY') = :year
 	order by
 		days.day DESC
 
+LIMIT 20
 
     </querytext>
 </partialquery>

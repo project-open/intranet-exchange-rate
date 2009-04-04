@@ -9,7 +9,7 @@
     <singleton-p>t</singleton-p>
     <auto-mount>intranet-exchange-rate</auto-mount>
 
-    <version name="3.4.0.5.0" url="http://projop.dnsalias.com/download/apm/intranet-exchange-rate-3.4.0.5.0.apm">
+    <version name="3.4.0.5.0" url="http://projop.project-open.net/download/apm/intranet-exchange-rate-3.4.0.5.0.apm">
 
         <owner url="mailto:frank.bergmann@project-open.com">Frank Bergmann</owner>
         <summary>Allows to maintain and query currency exchange rates</summary>
@@ -26,8 +26,8 @@
         <callbacks>
         </callbacks>
         <parameters>
-            <parameter datatype="string" min_n_values="1" max_n_values="1"  name="ExchangeRateUrlXRates" default="http://www.x-rates.com/d/USD/table.html" description="URL for X-Rates currency table"/>
-            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="MaxDaysOutdated"  default="365" description="Days before system complains about exchange rate updating"/>
+            <parameter datatype="string" min_n_values="1" max_n_values="1"  name="ExchangeRateUrlXRates" default="http://projop.project-open.net/intranet-asus-server/exchange-rates.xml" description="URL for exchange rates XML file"/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="MaxDaysOutdated"  default="15" description="Days before system complains about exchange rate updating"/>
         </parameters>
     </version>
 </package>

@@ -35,39 +35,12 @@ if {"" == $year} {
     set year [lindex [split [ns_localsqltimestamp] "-"] 0]
 }
 
-set currency_url [parameter::get_from_package_key -package_key "intranet-exchange-rate" -parameter "ExchangeRateUrlXRates" -default "http://www.x-rates.com/d/USD/table.html"]
-
-set form_id "exchange_rates"
-
 # ------------------------------------------------------------------
-# Build the form
+# 
 # ------------------------------------------------------------------
-
-set dimensional_list {
-	    { 1999 "1999" {where "to_char(days.day, 'YYYY') = '1999'"} }
-	    { 2000 "2000" {where "to_char(days.day, 'YYYY') = '2000'"} }
-	    { 2001 "2001" {where "to_char(days.day, 'YYYY') = '2001'"} }
-	    { 2002 "2002" {where "to_char(days.day, 'YYYY') = '2002'"} }
-	    { 2003 "2003" {where "to_char(days.day, 'YYYY') = '2003'"} }
-	    { 2004 "2004" {where "to_char(days.day, 'YYYY') = '2004'"} }
-	    { 2005 "2005" {where "to_char(days.day, 'YYYY') = '2005'"} }
-	    { 2006 "2006" {where "to_char(days.day, 'YYYY') = '2006'"} }
-	    { 2007 "2007" {where "to_char(days.day, 'YYYY') = '2007'"} }
-	    { 2008 "2008" {where "to_char(days.day, 'YYYY') = '2008'"} }
-	    { 2009 "2009" {where "to_char(days.day, 'YYYY') = '2009'"} }
-	    { 2010 "2010" {where "to_char(days.day, 'YYYY') = '2010'"} }
-	    { 2011 "2011" {where "to_char(days.day, 'YYYY') = '2011'"} }
-	    { 2012 "2012" {where "to_char(days.day, 'YYYY') = '2012'"} }
-	    { 2013 "2013" {where "to_char(days.day, 'YYYY') = '2013'"} }
-	    { 2014 "2014" {where "to_char(days.day, 'YYYY') = '2014'"} }
->           { 2015 "2015" {where "to_char(days.day, 'YYYY') = '2015'"} }
-	    { all "All" {} }
-}
-set dimensional_list [list [list year "Year:" $year $dimensional_list] ]
 
 set supported_currencies [im_supported_currencies]
 set missing_text "<strong>No packages match criteria.</strong>"
-set filter_html "<table><tr><td>[ad_dimensional $dimensional_list]</td></tr></table>"
 set use_watches_p [expr ! [ad_parameter -package_id [ad_acs_kernel_id] PerformanceModeP request-processor 1]]
 set return_url "[ad_conn url]?[ad_conn query]"
 
@@ -94,6 +67,47 @@ set table [ad_table -Torderby $orderby -Tmissing_text $missing_text exchange_rat
 # NavBar
 # ------------------------------------------------------------------
 
+set form_id "filter"
+set action_url "/intranet-exchange-rate/index"
+set form_mode "edit"
+
+set year_options [list]
+for {set i 1999} {$i <= 2015} {incr i} { lappend year_options [list $i $i] }
+
+ad_form \
+    -name $form_id \
+    -action $action_url \
+    -mode $form_mode \
+    -method GET \
+    -export { }\
+    -form {
+        {year:text(select),optional {label "[lang::message::lookup {} intranet-core.Year Year]"} {options $year_options}}
+    }
+
+template::element::set_value $form_id year $year
+
+
+# ------------------------------------------------------------------
+# NavBar
+# ------------------------------------------------------------------
+
+# Compile and execute the formtemplate if advanced filtering is enabled.
+eval [template::adp_compile -string {<formtemplate id="filter"></formtemplate>}]
+set filter_html $__adp_output
+
+# Left Navbar is the filter/select part of the left bar
+set left_navbar_html "
+        <div class='filter-block'>
+                <div class='filter-title'>
+                   [lang::message::lookup "" intranet-exchange-rate.Filter_Rates "Filter Rates"]
+                </div>
+                $filter_html
+        </div>
+      <hr/>
+"
+
+set currency_url [parameter::get_from_package_key -package_key "intranet-exchange-rate" -parameter "ExchangeRateUrlXRates" -default "http://www.x-rates.com/d/USD/table.html"]
+
 set admin_html "
 	<ul>
 <!--
@@ -103,8 +117,7 @@ set admin_html "
 	</ul>
 "
 
-
-set left_navbar_html "
+append left_navbar_html "
       <div class='filter-block'>
          <div class='filter-title'>
             [lang::message::lookup "" intranet-exchange-rate.Admin_Links "Admin Links"]
