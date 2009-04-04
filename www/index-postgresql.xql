@@ -16,9 +16,6 @@
 		to_char(days.day, 'YYYY') = :year
 	order by
 		days.day DESC
-
-LIMIT 20
-
     </querytext>
 </partialquery>
  
