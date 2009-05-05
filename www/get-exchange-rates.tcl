@@ -139,7 +139,7 @@ foreach root_node $root_nodes {
 	    # <exchange_rate iso="CAD" day="2009-04-05">0.805626</exchange_rate>
 	    set currency_code [apm_tag_value -default "" $root_node iso]
 	    set currency_day [apm_tag_value -default "" $root_node day]
-	    ad_return_complaint 1 "$currency_code, $currency_day"
+#	    ad_return_complaint 1 "$currency_code, $currency_day"
 	}
 
 	default {
@@ -151,8 +151,8 @@ foreach root_node $root_nodes {
 xml_doc_free $tree
 
 
+ad_return_complaint 1 "Not yet implemented - Please wait until the release of V3.4"
 
-ToDo: exchange_rate tag evaluation doesn't work yet
 
 # ------------------------------------------------------------
 # Show the list of currently installed packages
