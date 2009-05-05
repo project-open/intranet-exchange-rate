@@ -55,13 +55,13 @@ list::create \
     -bulk_actions { Delete active-currencies "Mark currency as inactive" } \
     -elements {
         iso {
-            display_col iso
             label "ISO"
+            display_col iso
             link_url_eval $iso
         }        
         currency_name {
-            display_col currency_name
             label "Name"
+            display_col currency_name
             link_url_eval $currency_name
         }
     }

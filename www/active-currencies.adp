@@ -22,7 +22,7 @@
 	<tr>
 	<td>
 		<form action=active-currencies-add method=POST>
-		<%= [im_currency_select currency] %><br>
+		<%= [im_currency_select -enabled_only_p 0 -currency_name "iso || ' - ' || currency_name" currency] %><br>
 		<input type=submit value="<%= [lang::message::lookup "" intranet-exchange-rate.Add_Active_Currency "Add Active Currency"] %>">
 		</form>
 	</td>
