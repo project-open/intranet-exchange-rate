@@ -24,7 +24,7 @@
 		</p>
 	"] %>
 	
-	<form action="">
+	<form action="get-exchange-rates">
 	<input type=submit value="<%= [lang::message::lookup "" intranet-exchange-rate.Button_Get_Exchange_Rates "Get Exchange Rates"] %>"
 	</form>
 	
