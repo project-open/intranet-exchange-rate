@@ -54,7 +54,7 @@ list::create \
     -main_class "list" \
     -sub_class "narrow" \
     -actions {  } \
-    -bulk_actions { Delete active-currencies "Mark currency as inactive" } \
+    -bulk_actions { Delete deactivate-currencies "Mark currency as inactive" } \
     -elements {
         iso {
             label "ISO"
@@ -72,7 +72,6 @@ db_multirow active_currencies select_active_currencies {
 	select	*
 	from	currency_codes
 	where	supported_p = 't'
-		and iso != 'USD'
 	order by lower(currency_name)
 }
 

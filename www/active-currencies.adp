@@ -34,7 +34,7 @@
 </tr>
 </table>
 
-
+<!-- 
 <p>&nbsp;</p>
 <h2><%= [lang::message::lookup "" intranet-exchange-rate.Immutable_Currencies "Immutable Currencies"] %></h2>
 
@@ -55,6 +55,8 @@
           </tr>      
 </tbody>
 </table>
+-->
+
 
 <p>&nbsp;</p>
 <p>
