@@ -51,7 +51,7 @@ set table_def {
 set rate_select ""
 set rate_from ""
 foreach currency [im_supported_currencies] {
-    set low_cur [string tolower $currency]
+    set low_cur "cur_[string tolower $currency]"
     lappend table_def [list $currency "$currency" "" "<td><font color=\${${low_cur}_color}>\${$low_cur}</font></td>"]
 
     append rate_select "\t\t,$low_cur.rate as $low_cur\n"

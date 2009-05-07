@@ -188,21 +188,19 @@ foreach root_node $root_nodes {
 	    ns_write "<li>exchange_rate($currency_code,$currency_day) = $exchange_rate...\n"
 
 	    if {![info exists enabled_currencies_hash($currency_code)]} {
+		set fill_hole_currency_hash($currency_code) 1
+	    }
 
-		ns_write "Discarded (not an active currency)</li>\n"
-
-	    } else {
-
-		# Insert values into the Exchange Rates table
-		if {"" != $currency_code && "" != $currency_day} {
+	    # Insert values into the Exchange Rates table
+	    if {"" != $currency_code && "" != $currency_day} {
 			
-		    db_dml delete_entry "
+		db_dml delete_entry "
 				delete  from im_exchange_rates
 				where   day = :currency_day::date and
 					currency = :currency_code
-		    "
+		"
 	
-		    db_dml insert_rates "
+		db_dml insert_rates "
 				insert into im_exchange_rates (
 					day,
 					currency,
@@ -214,11 +212,10 @@ foreach root_node $root_nodes {
 					:exchange_rate,
 					't'
 				)
-		    "
+		"
 	
-		    im_exec_dml invalidate "im_exchange_rate_invalidate_entries (:currency_day::date, :currency_code)"
-		    set fill_hole_currency_hash($currency_code) 1
-		}
+		im_exec_dml invalidate "im_exchange_rate_invalidate_entries (:currency_day::date, :currency_code)"
+
 		ns_write "Success</li>\n"
 	    }
 	}

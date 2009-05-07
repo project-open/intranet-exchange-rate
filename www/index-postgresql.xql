@@ -6,8 +6,7 @@
     <querytext>
 
 	select
-		days.day as day,
-		:return_url as return_url
+		days.day as day
 		$rate_select
 	from
 		(select distinct day from im_exchange_rates) days
