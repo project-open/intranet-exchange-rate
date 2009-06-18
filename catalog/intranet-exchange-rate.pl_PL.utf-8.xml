@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<message_catalog package_key="intranet-exchange-rate" package_version="3.4.0.6.0" locale="pl_PL" charset="utf-8">
+
+  <msg key="Exchange_Rate">Kurs wymiany waluty</msg>
+  <msg key="Exchange_Rates">Kursy walut</msg>
+</message_catalog>

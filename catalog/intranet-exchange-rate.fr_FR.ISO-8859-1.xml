@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<message_catalog package_key="intranet-exchange-rate" package_version="3.4.0.6.0" locale="fr_FR" charset="ISO-8859-1">
+
+  <msg key="Exchange_Rate">Echange de devise</msg>
+  <msg key="Exchange_Rates">Echanges de devises</msg>
+</message_catalog>
