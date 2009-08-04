@@ -45,7 +45,7 @@ set use_watches_p [expr ! [ad_parameter -package_id [ad_acs_kernel_id] Performan
 set return_url "[ad_conn url]?[ad_conn query]"
 
 set table_def {
-    { xchg_date "Date" "" "<td><a href=\"[export_vars -base new {{form_mode edit} {today $day} return_url}]\">$day</a></td>" }
+    { xchg_date "Date" "" "<td><a href=\"[export_vars -base new {{form_mode edit} {today $day} return_url}]\"><nobr>$day</nobr></a></td>" }
 }
 
 set rate_select ""
