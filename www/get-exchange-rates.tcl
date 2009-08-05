@@ -15,8 +15,8 @@ ad_page_contract {
 
 set today [lindex [split [ns_localsqltimestamp] " "] 0]
 
-set currency_url [parameter::get_from_package_key -package_key "intranet-exchange-rate" -parameter "ExchangeRateUrlXRates" -default "http://projop.project-open.net/intranet-asus-server/exchange-rates.xml"]
 
+set currency_update_url [parameter::get_from_package_key -package_key "intranet-exchange-rate" -parameter "ExchangeRateUpdateUrl" -default "http://www.project-open.org/intranet-asus-server/exchange-rates.xml"]
 
 set user_id [auth::require_login]
 set user_is_admin_p [im_is_user_site_wide_or_intranet_admin $user_id]
@@ -33,7 +33,7 @@ set bgcolor(0) " class=roweven"
 set bgcolor(1) " class=rowodd"
 
 set system_id [im_system_id]
-set full_url [export_vars -base $currency_url {system_id}]
+set full_url [export_vars -base $currency_update_url {system_id}]
 
 ns_log Notice "load-update-xml-2: full_url=$full_url"
 ns_log Notice "load-update-xml-2: system_id=$system_id"
@@ -52,20 +52,20 @@ ns_write "
 # Fetch the update.xml file from the remote server
 #
 
-ns_write "<li>Getting exchange rates XML file from '$currency_url' ...\n"
+ns_write "<li>Getting exchange rates XML file from '$currency_update_url' ...\n"
 
 set update_xml ""
 if { [catch {
 	set update_xml [ns_httpget $full_url]
 } errmsg] } {
-    ad_return_complaint 1 "Error while accessing the URL '$currency_url'.<br>
+    ad_return_complaint 1 "Error while accessing the URL '$currency_update_url'.<br>
 	Please check your URL. The following error was returned: <br>
 	<blockquote><pre>[ad_quotehtml $errmsg]</pre></blockquote>"
     return
-}	
+}
 
 if {"" == $update_xml} {
-    ad_return_complaint 1 "Found an empty XML file accessing the URL '$currency_url'.<br>
+    ad_return_complaint 1 "Found an empty XML file accessing the URL '$currency_update_url'.<br>
 	This means that your server(!) was not able to access the URL.<br>
 	Please check the the Internet and firewall configuration of your
 	server and verify that the 'nsd' (Linux) or 'nsd4' (Windows) 
@@ -93,7 +93,7 @@ if {![regexp {<([^>]*)>\s*<([^>]*)>} $update_xml match tag1 tag2]} {
 	<li>
 		<font color=red>
 		Error while retreiving update information from
-		URL '$currency_url'.<br>
+		URL '$currency_update_url'.<br>
 		The retreived files doesn't seem to be a XML or HTML file:<br>
 		<pre>$update_xml</pre>
 		</font>
@@ -107,7 +107,7 @@ if {[string tolower $tag1] == "html" || [string tolower $tag2] == "html"} {
 	<li>
 		<font color=red>
 		Error while retreiving update information from  URL<br>
-		'$currency_url'.<br>
+		'$currency_update_url'.<br>
 		The retreived result seems to be a HTML document and not an XML document.<br>
 		Please check the URL above and/or send an error report to 
 		<a href=\"mailto:support@project-open.com\">support@project-open.com</a>.
@@ -230,10 +230,17 @@ ns_write "<li>Freeing document nodes</li>\n"
 xml_doc_free $tree
 
 
-foreach cur [array names fill_hole_currency_hash] {
+set enabled_currencies [db_list enabled_currencies "select iso from currency_codes where supported_p = 't'"]
+foreach cur $enabled_currencies {
+
     ns_write "<li>Extrapolating exchange rates for '$cur' ... \n"
-    im_exec_dml invalidate "im_exchange_rate_fill_holes(:cur)"
-    ns_write "Success</li>\n"
+    set success "Success"
+    if {[catch {
+	im_exec_dml invalidate "im_exchange_rate_fill_holes(:cur)"
+    } err_msg]} {
+	set success "<pre>$err_msg</pre>"
+    }
+    ns_write "$success</li>\n"
 }
 
 ns_write "<li>Finished.</li>\n"
