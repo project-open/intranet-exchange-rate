@@ -74,11 +74,6 @@ if {"" == $update_xml} {
 }	
 
 ns_write "Success</li>\n"
-ns_write "
-</ul>
-<h2>Processing Data</h2>
-<ul>
-"
 
 
 # ------------------------------------------------------------
@@ -161,9 +156,25 @@ set debug ""
 set root_nodes [xml_node_get_children $root_node]
 
 
+ns_write "
+</ul>
+<h2>Login Status</h2>
+<ul>
+"
+
+
 # login_status = "ok" or "fail"
 set login_status [[$root_node selectNodes {//error}] text]
 set login_message [[$root_node selectNodes {//error_message}] text]
+ns_write "<li>Login Status: $login_status"
+ns_write "<li>Login Message: $login_message"
+ns_write "<br>&nbsp;<br>"
+
+ns_write "
+</ul>
+<h2>Processing Data</h2>
+<ul>
+"
 
 foreach root_node $root_nodes {
 
@@ -214,7 +225,7 @@ foreach root_node $root_nodes {
 				)
 		"
 	
-		im_exec_dml invalidate "im_exchange_rate_invalidate_entries (:currency_day::date, :currency_code)"
+#		im_exec_dml invalidate "im_exchange_rate_invalidate_entries (:currency_day::date, :currency_code)"
 
 		ns_write "Success</li>\n"
 	    }
