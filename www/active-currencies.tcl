@@ -59,12 +59,10 @@ list::create \
         iso {
             label "ISO"
             display_col iso
-            link_url_eval $iso
         }        
         currency_name {
             label "Name"
             display_col currency_name
-            link_url_eval $currency_name
         }
     }
 
