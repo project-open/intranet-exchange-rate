@@ -15,28 +15,9 @@
 <tr valign=top>
 <td>
 	<%= [im_component_bay left] %>
-
-@table;noquote@
+	@table;noquote@
 </td>
 <td>
-	<%= [im_box_header [lang::message::lookup "" intranet-exchange-rate.Update_Exchange_Rates "Update Exchange Rates"]] %>
-
-	<%= [lang::message::lookup "" intranet-exchange-rate.Exchange_ASUS_Disclaimer "
-		<p>
-		This service allows you to automatically update your
-		exchange rates from our exchange rate server.<br>
-		By using this service you accept that we provide this 
-		service 'as is' and don't accept any liability for 
-		incorrect data and any consequences of using them.
-		</p>
-	"] %>
-	
-	<form action="get-exchange-rates">
-	<input type=submit value="<%= [lang::message::lookup "" intranet-exchange-rate.Button_Get_Exchange_Rates "Get Exchange Rates"] %>"
-	</form>
-	
-	<%= [im_box_footer] %>
-
 	<%= [im_component_bay right] %>
 
 </td>
@@ -47,5 +28,4 @@
 </td>
 </tr>
 </table>
-
 
