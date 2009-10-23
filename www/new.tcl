@@ -15,7 +15,7 @@ ad_page_contract {
 } {
     { form_mode "edit" }
     { today "" }
-    return_url
+    { return_url "/intranet-exchange-rate/index" }
 }
 
 
