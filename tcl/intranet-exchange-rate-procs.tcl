@@ -81,7 +81,9 @@ ad_proc im_exchange_rate_outdated_map { } {
 		currency,
 		now()::date - max(day) as days_outdated,
 		max(day) as last_update
-	from	(
+	from
+		currency_codes cc,
+		(
 			select	max(day) as day,
 				currency
 			from	im_exchange_rates
@@ -93,6 +95,9 @@ ad_proc im_exchange_rate_outdated_map { } {
 			from	currency_codes
 			where	supported_p = 't'
 		) e
+	where
+		cc.iso = e.currency and
+		cc.supported_p = 't'
 	group by currency
     "]
 
