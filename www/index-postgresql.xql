@@ -12,7 +12,8 @@
 		(select distinct day from im_exchange_rates) days
 		$rate_from
 	where
-		to_char(days.day, 'YYYY') = :year
+                to_char(days.day, 'YYYY') = :year and
+                days.day <= now()
 	order by
 		days.day DESC
     </querytext>
