@@ -26,7 +26,7 @@
         <callbacks>
         </callbacks>
         <parameters>
-            <parameter datatype="string" min_n_values="1" max_n_values="1"  name="ExchangeRateUpdateUrl" default="http://www.project-open.org/intranet-asus-server/exchange-rates.xml" description="URL for exchange rates XML file"/>
+            <parameter datatype="string" min_n_values="1" max_n_values="1"  name="ExchangeRateUpdateUrl" default="http://www.project-open.net/intranet-asus-server/exchange-rates.xml" description="URL for exchange rates XML file"/>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="MaxDaysOutdated"  default="15" description="Days before system complains about exchange rate updating"/>
         </parameters>
     </version>
