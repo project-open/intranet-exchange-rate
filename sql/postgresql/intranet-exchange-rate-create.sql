@@ -30,10 +30,9 @@ create table im_exchange_rates (
 
 
 
--- Fills ALL "holes" in the im_exchange_rates table.
--- Populate im_exchange_rates for the next 5 years
+
 create or replace function im_exchange_rate_fill_holes (varchar)
-returns integer as '
+returns integer as $body$
 DECLARE
     p_currency			alias for $1;
     v_max			integer;
@@ -42,10 +41,10 @@ DECLARE
     row2			RECORD;
     exists			integer;
 BEGIN
-    RAISE NOTICE ''im_exchange_rate_fill_holes: cur=%'', p_currency;
+    RAISE NOTICE 'im_exchange_rate_fill_holes: cur=%', p_currency;
 
-    v_start_date := to_date(''1999-01-01'', ''YYYY-MM-DD'');
-    v_max := 365 * 16;
+    v_start_date := to_date('2010-01-01', 'YYYY-MM-DD');
+    v_max := 365 * 5;
 
     -- Loop through all dates and check if there
     -- is a hole (no entry for a date)
@@ -59,7 +58,7 @@ BEGIN
 		) ex on (im_day_enumerator = ex.day)
 	where	ex.rate is null
     LOOP
-	-- RAISE NOTICE ''im_exchange_rate_fill_holes: day=%'', row2.day;
+	-- RAISE NOTICE 'im_exchange_rate_fill_holes: day=%', row2.day;
 	-- get the latest manually entered exchange rate
 	select	rate
 	into	v_rate
@@ -69,10 +68,10 @@ BEGIN
 			from	im_exchange_rates 
 			where	day < row2.day
 				and currency = p_currency
-				and manual_p = ''t''
+				and manual_p = 't'
 		      )
 		and currency = p_currency;
-	-- RAISE NOTICE ''im_exchange_rate_fill_holes: rate=%'', v_rate;
+	-- RAISE NOTICE 'im_exchange_rate_fill_holes: rate=%', v_rate;
 	-- use the latest exchange rate for the next few years...
 	select	count(*) into exists
 	from im_exchange_rates 
@@ -80,23 +79,43 @@ BEGIN
 	IF exists > 0 THEN
 		update im_exchange_rates
 		set	rate = v_rate,
-			manual_p = ''f''
+			manual_p = 'f'
 		where	day = row2.day
 			and currency = p_currency;
 	ELSE
-	RAISE NOTICE ''im_exchange_rate_fill_holes: day=%, cur=%, rate=%, x=%'',row2.day, p_currency, v_rate, exists;
+	RAISE NOTICE 'im_exchange_rate_fill_holes: day=%, cur=%, rate=%, x=%',row2.day, p_currency, v_rate, exists;
 		insert into im_exchange_rates (
 			day, rate, currency, manual_p
 		) values (
-			row2.day, v_rate, p_currency, ''f''		
+			row2.day, v_rate, p_currency, 'f'		
 		);
 	END IF;
 
     END LOOP;	
 
     return 0;
-end;' language 'plpgsql';
--- select im_exchange_rate_fill_holes ();
+end;$body$ language 'plpgsql';
+
+
+
+
+
+create or replace function im_exchange_rate_fill_holes ()
+returns integer as $body$
+DECLARE
+    row			RECORD;
+BEGIN
+    FOR row IN
+    	select	iso
+	from	currency_codes
+	where	supported_p = 't'
+    LOOP
+	perform im_exchange_rate_fill_holes(row.iso);
+    END LOOP;
+
+    return 0;
+end;$body$ language 'plpgsql';
+
 
 
 
