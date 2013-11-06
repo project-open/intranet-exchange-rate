@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="intranet-exchange-rate" package_version="3.4.0.7.0" locale="en_US" charset="ISO-8859-1">
+<message_catalog package_key="intranet-exchange-rate" locale="en_US" charset="ISO-8859-1">
 
+  <msg key="Automatic_Update_History">Automatic Update History</msg>
+  <msg key="Automatic_Updates_Days">Automatic Updates Days</msg>
+  <msg key="Automatic_Updates_Enabled_p">Automatic Updates EnabledP</msg>
+  <msg key="Automatic_Updates_Status">Automatic Updates Status</msg>
+  <msg key="Button_Get_Exchange_Rates_Now">Get Exchange Rates Now</msg>
+  <msg key="Edit_Parameters">Edit Parameters</msg>
+  <msg key="Enable_Full_ASUS">Enable Full ASUS</msg>
+  <msg key="Exchange_ASUS_Disabled">Exchange ASUS Disabled</msg>
+  <msg key="Exchange_ASUS_Disclaimer">&lt;p&gt;
+This service allows you to automatically update your
+exchange rates from our exchange rate server.&lt;br&gt;
+By using this service you accept that we provide this
+service 'as is' and don't accept any liability for
+incorrect data and any consequences of using them.
+&lt;/p&gt;
+</msg>
   <msg key="Exchange_Rate">Exchange Rate</msg>
   <msg key="Exchange_Rates">Exchange Rates</msg>
+  <msg key="Last_Update">Last Update</msg>
 </message_catalog>

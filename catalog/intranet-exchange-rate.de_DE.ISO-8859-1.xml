@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <message_catalog package_key="intranet-exchange-rate" locale="de_DE" charset="ISO-8859-1">
 
+  <msg key="Active_currencies">Aktive Währungen</msg>
+  <msg key="Admin_Links">Administration</msg>
+  <msg key="Automatic_Update_History">Historie Automatische Aktualisierungen</msg>
+  <msg key="Automatic_Updates_Days">Intervall zwischen automatischen Aktualisierungen (Tage)</msg>
+  <msg key="Automatic_Updates_Enabled_p">Automatische Aktualisierungen eingeschaltet?</msg>
+  <msg key="Automatic_Updates_Status">Status Automatische Aktualisierungen</msg>
+  <msg key="Button_Get_Exchange_Rates">Wechselkurse laden</msg>
+  <msg key="Button_Get_Exchange_Rates_Now">Wechselkurse jetzt laden</msg>
+  <msg key="Edit_Parameters">Parameter bearbeiten</msg>
+  <msg key="Enable_Full_ASUS">ASUS einschalten</msg>
+  <msg key="Exchange_ASUS_Disabled">Wechselkurse ASUS ausgeschaltet</msg>
+  <msg key="Exchange_ASUS_Disclaimer">&lt;p&gt;
+Dieser Service erlaubt es Ihnen, Wechselkurse automatisch von einem
+]project-open[ Server zu beziehen.&lt;br&gt;
+Wenn Sie diesen Service benutzen, dann stimmen Sie unseren ASUS Servicebedingungen zu.
+Inbesondere akzeptieren Sie, dass ]project-open[ Business Solutions, S.L. keine Gewähr für die Korrektheit oder die Verfügbarkeit des Service übernimmt.
+&lt;/p&gt;
+</msg>
   <msg key="Exchange_Rate">Wechselkurs</msg>
   <msg key="Exchange_Rates">Wechselkurse</msg>
+  <msg key="Filter_Rates">Wechselkurse filtern</msg>
+  <msg key="Get_exchange_rates_for_today">Wechselkurse jetzt laden</msg>
+  <msg key="Last_Update">Letzte Aktualisierung</msg>
 </message_catalog>
