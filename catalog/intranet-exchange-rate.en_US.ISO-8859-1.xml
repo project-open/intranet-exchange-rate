@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <message_catalog package_key="intranet-exchange-rate" locale="en_US" charset="ISO-8859-1">
 
+  <msg key="Active_currencies">Active Currencies</msg>
+  <msg key="Admin_Links">Admin Links</msg>
   <msg key="Automatic_Update_History">Automatic Update History</msg>
   <msg key="Automatic_Updates_Days">Automatic Updates Days</msg>
   <msg key="Automatic_Updates_Enabled_p">Automatic Updates EnabledP</msg>
   <msg key="Automatic_Updates_Status">Automatic Updates Status</msg>
+  <msg key="Button_Get_Exchange_Rates">Get Exchange Rates</msg>
   <msg key="Button_Get_Exchange_Rates_Now">Get Exchange Rates Now</msg>
   <msg key="Edit_Parameters">Edit Parameters</msg>
   <msg key="Enable_Full_ASUS">Enable Full ASUS</msg>
@@ -19,5 +22,7 @@ incorrect data and any consequences of using them.
 </msg>
   <msg key="Exchange_Rate">Exchange Rate</msg>
   <msg key="Exchange_Rates">Exchange Rates</msg>
+  <msg key="Filter_Rates">Filter Rates</msg>
+  <msg key="Get_exchange_rates_for_today">Get exchange rates for today</msg>
   <msg key="Last_Update">Last Update</msg>
 </message_catalog>
