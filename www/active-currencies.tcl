@@ -70,6 +70,42 @@ db_multirow active_currencies select_active_currencies {
 	select	*
 	from	currency_codes
 	where	supported_p = 't'
-	order by lower(currency_name)
+	order by lower(iso)
+}
+
+
+
+
+
+
+# ------------------------------------------------------------------
+# Available Currencies
+# ------------------------------------------------------------------
+
+list::create \
+    -name available_currencies \
+    -multirow available_currencies \
+    -key iso \
+    -checkbox_name checkbox \
+    -selected_format "normal" \
+    -class "list" \
+    -main_class "list" \
+    -sub_class "narrow" \
+    -actions {  } \
+    -elements {
+        iso {
+            label "ISO"
+            display_col iso
+        }        
+        currency_name {
+            label "Name"
+            display_col currency_name
+        }
+    }
+
+db_multirow available_currencies select_available_currencies {
+	select	*
+	from	currency_codes
+	order by lower(iso)
 }
 

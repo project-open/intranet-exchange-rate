@@ -65,3 +65,14 @@ The value of the US Dollar should always be '1.0', because it
 is the reference currency.
 </p>
 
+
+<br>&nbsp;<br>
+<h2><%= [lang::message::lookup "" intranet-exchange-rate.Available_Currencies "Available Currencies"] %></h2>
+
+<p>The list below shows all available currencies.</p>
+<p>If you need to add an additional currency, please use pgAdminIII 
+(part of both the Windows and Linux installer)
+and edit the table "currency_codes" or execute the following SQL statement:</p>
+<pre>insert into currency_codes (iso, currency_name) values ('&lt;new_code&gt;', '&lt;new_currency_name&gt;');</pre>
+
+<listtemplate name="available_currencies"></listtemplate>
