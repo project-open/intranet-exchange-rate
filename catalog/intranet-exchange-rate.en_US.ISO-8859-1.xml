@@ -12,13 +12,20 @@
   <msg key="Edit_Parameters">Edit Parameters</msg>
   <msg key="Enable_Full_ASUS">Enable Full ASUS</msg>
   <msg key="Exchange_ASUS_Disabled">Exchange ASUS Disabled</msg>
-  <msg key="Exchange_ASUS_Disclaimer">&lt;p&gt;
-This service allows you to automatically update your
-exchange rates from our exchange rate server.&lt;br&gt;
-By using this service you accept that we provide this
-service 'as is' and don't accept any liability for
-incorrect data and any consequences of using them.
-&lt;/p&gt;
+  <msg key="Exchange_ASUS_Disclaimer">&lt;p&gt;
+
+This service allows you to automatically update your
+
+exchange rates from our exchange rate server.&lt;br&gt;
+
+By using this service you accept that we provide this
+
+service 'as is' and don't accept any liability for
+
+incorrect data and any consequences of using them.
+
+&lt;/p&gt;
+
 </msg>
   <msg key="Exchange_Rate">Exchange Rate</msg>
   <msg key="Exchange_Rates">Exchange Rates</msg>

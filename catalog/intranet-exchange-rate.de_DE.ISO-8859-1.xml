@@ -12,12 +12,18 @@
   <msg key="Edit_Parameters">Parameter bearbeiten</msg>
   <msg key="Enable_Full_ASUS">ASUS einschalten</msg>
   <msg key="Exchange_ASUS_Disabled">Wechselkurse ASUS ausgeschaltet</msg>
-  <msg key="Exchange_ASUS_Disclaimer">&lt;p&gt;
-Dieser Service erlaubt es Ihnen, Wechselkurse automatisch von einem
-]project-open[ Server zu beziehen.&lt;br&gt;
-Wenn Sie diesen Service benutzen, dann stimmen Sie unseren ASUS Servicebedingungen zu.
-Inbesondere akzeptieren Sie, dass ]project-open[ Business Solutions, S.L. keine Gewähr für die Korrektheit oder die Verfügbarkeit des Service übernimmt.
-&lt;/p&gt;
+  <msg key="Exchange_ASUS_Disclaimer">&lt;p&gt;
+
+Dieser Service erlaubt es Ihnen, Wechselkurse automatisch von einem
+
+]project-open[ Server zu beziehen.&lt;br&gt;
+
+Wenn Sie diesen Service benutzen, dann stimmen Sie unseren ASUS Servicebedingungen zu.
+
+Inbesondere akzeptieren Sie, dass ]project-open[ Business Solutions, S.L. keine Gewähr für die Korrektheit oder die Verfügbarkeit des Service übernimmt.
+
+&lt;/p&gt;
+
 </msg>
   <msg key="Exchange_Rate">Wechselkurs</msg>
   <msg key="Exchange_Rates">Wechselkurse</msg>

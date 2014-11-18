@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="intranet-exchange-rate" package_version="3.4.0.7.0" locale="es_ES" charset="ISO-8859-1">
+<message_catalog package_key="intranet-exchange-rate" locale="es_ES" charset="ISO-8859-1">
 
   <msg key="Exchange_Rate">Cambio de divisas</msg>
   <msg key="Exchange_Rates">Cambio de divisas</msg>
