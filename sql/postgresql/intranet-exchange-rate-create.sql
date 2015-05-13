@@ -30,27 +30,28 @@ create table im_exchange_rates (
 
 
 
-
-create or replace function im_exchange_rate_fill_holes (varchar)
+-- Fill "holes" (=missing exchange rate entries)
+-- with the values from the last manually entered
+-- rates. This procedure is "idempotent", so it 
+-- can be executed at any time.
+create or replace function im_exchange_rate_fill_holes (varchar, date, date)
 returns integer as $body$
 DECLARE
     p_currency			alias for $1;
-    v_max			integer;
-    v_start_date		date;
+    p_start_date		alias for $2;
+    p_end_date			alias for $3;
+
     v_rate			numeric;
     row2			RECORD;
     exists			integer;
 BEGIN
-    RAISE NOTICE 'im_exchange_rate_fill_holes: cur=%', p_currency;
-
-    v_start_date := to_date('2010-01-01', 'YYYY-MM-DD');
-    v_max := 365 * 5;
+    RAISE NOTICE 'im_exchange_rate_fill_holes: cur=%, start=%, end=%', p_currency, p_start_date, p_end_date;
 
     -- Loop through all dates and check if there
     -- is a hole (no entry for a date)
     FOR row2 IN
 	select	im_day_enumerator as day
-	from	im_day_enumerator(v_start_date, v_start_date + v_max)
+	from	im_day_enumerator(p_start_date, p_end_date)
 		LEFT OUTER JOIN (
 			select	*
 			from	im_exchange_rates 
@@ -90,16 +91,36 @@ BEGIN
 			row2.day, v_rate, p_currency, 'f'		
 		);
 	END IF;
-
     END LOOP;	
 
     return 0;
 end;$body$ language 'plpgsql';
 
 
+-- Compatibility version of fill_holes:
+-- Fills holes for 2012 - 2017.
+create or replace function im_exchange_rate_fill_holes (varchar)
+returns integer as $body$
+DECLARE
+    p_currency			alias for $1;
+    v_max			integer;
+    v_start_date		date;
+    v_end_date			date;
+BEGIN
+    RAISE NOTICE 'im_exchange_rate_fill_holes: cur=%', p_currency;
+
+    v_max := 365 * 7;
+    v_start_date := to_date('2010-01-01', 'YYYY-MM-DD');
+    v_end_date = v_start_date + v_max;
+
+    RETURN im_exchange_rate_fill_holes (p_currency, v_start_date, v_end_date);
+
+end;$body$ language 'plpgsql';
 
 
 
+-- Most generic variant of fill_holes:
+-- Fill for all currencies in the last 5 years
 create or replace function im_exchange_rate_fill_holes ()
 returns integer as $body$
 DECLARE
@@ -119,50 +140,90 @@ end;$body$ language 'plpgsql';
 
 
 
--- Deletes all entries AFTER a new entry, until an
--- entry is found with manual_t = 't'.
+-- Deletes all entries around a new entry.
 -- This function is useful after adding a new entriy
 -- to delete all those entries that need to be updated.
 create or replace function im_exchange_rate_invalidate_entries (date, char(3))
-returns integer as '
+returns integer as $body$
 DECLARE
-    p_date			alias for $1;
+    p_currency_date			alias for $1;
     p_currency			alias for $2;
 
+    v_prev_entry_date		date;
     v_next_entry_date		date;
     v_max			integer;
     v_start_date		date;
-    v_rate			numeric;
-    row				RECORD;
-    row2			RECORD;
 BEGIN
-    v_start_date := to_date(''1999-01-01'', ''YYYY-MM-DD'');
-    v_max := 365 * 16;
+    v_start_date := to_date('2010-01-01', 'YYYY-MM-DD');
+    v_max := 365 * 7;
 
-    select	min(day)
-    into	v_next_entry_date
+    -- Determine the last manual entry BEFORE the insert date
+    select	max(day) into v_prev_entry_date
     from	im_exchange_rates
-    where	day > p_date
-		and manual_p = ''t''
-		and currency = p_currency;
+    where	day < p_currency_date and manual_p = 't' and currency = p_currency;
+    IF v_prev_entry_date is NULL THEN v_prev_entry_date := v_start_date;  END IF;
 
-    IF v_next_entry_date is NULL THEN
-	v_next_entry_date := v_start_date + v_max;
-    END IF;
-
-    -- Delete entries between current date and v_next_entry_date-1
-    delete
+    -- Determine the next manual manual entry AFTER the insert date
+    select	min(day) into v_next_entry_date
     from	im_exchange_rates
-    where	currency = p_currency
-		and day < v_next_entry_date
-		and day > p_date
-		and manual_p = ''f'';
+    where	day > p_currency_date and manual_p = 't' and currency = p_currency;
+    IF v_next_entry_date is NULL THEN v_next_entry_date := v_start_date + v_max; END IF;
+
+    -- Delete entries between last and next
+    delete from im_exchange_rates
+    where	currency = p_currency and
+		day <= v_next_entry_date and
+		day >= v_prev_entry_date
+		and manual_p = 'f';
 
     return 0;
-end;' language 'plpgsql';
+end;$body$ language 'plpgsql';
 -- select im_exchange_rate_invalidate_entries ('2005-07-02'::date, 'EUR');
 
+-- Delete all automatically created entries in the relevant period.
+create or replace function im_exchange_rate_invalidate_entries(char(3))
+returns integer as $body$
+DECLARE
+    p_currency			alias for $1;
+    v_max			integer;
+    v_start_date		date;
+    v_end_date			date;
+BEGIN
+    RAISE NOTICE 'im_exchange_rate_invalidate_entries: cur=%', p_currency;
 
+    -- Delete entries since 2010.
+    delete from im_exchange_rates
+    where	currency = p_currency and
+		day >= '2010-01-01'::date
+		and manual_p = 'f';
+    return 0;
+end;$body$ language 'plpgsql';
+
+
+-- Most generic variant of fill_holes:
+-- Fill for all currencies in the last 5 years
+create or replace function im_exchange_rate_invalidate_entries ()
+returns integer as $body$
+DECLARE
+    row			RECORD;
+BEGIN
+    FOR row IN
+    	select	iso
+	from	currency_codes
+	where	supported_p = 't'
+    LOOP
+	PERFORM im_exchange_rate_invalidate_entries(row.iso);
+    END LOOP;
+
+    return 0;
+end;$body$ language 'plpgsql';
+
+
+
+
+------------------------------------------------------------
+-- Access Functions
+------------------------------------------------------------
 
 -- shortcut function to calculate the exchange rate for a
 -- specific day. This function is relatively slow and should 
@@ -200,8 +261,13 @@ end;' language 'plpgsql';
 -- select im_exchange_rate(to_date('2005-07-01','YYYY-MM-DD'), 'EUR', 'USD');
 
 
-select im_component_plugin__del_module('intranet-exchange-rate');
-select im_menu__del_module('intranet-exchange-rate');
+
+------------------------------------------------------------
+-- Portlets and Menus
+------------------------------------------------------------
+
+-- select im_component_plugin__del_module('intranet-exchange-rate');
+-- select im_menu__del_module('intranet-exchange-rate');
 
 
 create or replace function inline_0 ()
