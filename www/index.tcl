@@ -41,7 +41,7 @@ if {"" == $year} {
 
 set supported_currencies [im_supported_currencies]
 set missing_text "<strong>No packages match criteria.</strong>"
-set use_watches_p [expr ! [ad_parameter -package_id [ad_acs_kernel_id] PerformanceModeP request-processor 1]]
+set use_watches_p [expr ! [im_parameter -package_id [ad_acs_kernel_id] PerformanceModeP request-processor 1]]
 set return_url "[ad_conn url]?[ad_conn query]"
 
 set table_def {

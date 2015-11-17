@@ -56,7 +56,7 @@ ad_proc im_exchange_rate_outdated_currencies { } {
     Otherwise returns a list of currency - days_outdated
     for the "supported_currencies" that are outdated.
 } {
-    set max_days_outdated [ad_parameter -package_id [im_package_exchange_rate_id] "MaxDaysOutdated" "" 7]
+    set max_days_outdated [im_parameter -package_id [im_package_exchange_rate_id] "MaxDaysOutdated" "" 7]
     set currency_date_map [im_exchange_rate_outdated_map]
 
     set result [list]
