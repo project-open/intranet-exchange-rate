@@ -1,14 +1,14 @@
 <master src="../../intranet-core/www/master">
-<property name="title">@page_title@</property>
-<property name="context_bar">@context_bar;noquote@</property>
+<property name="doc(title)">@page_title;literal@</property>
+<property name="context_bar">@context_bar;literal@</property>
 <property name="main_navbar_label">home</property>
-<property name="focus">@page_focus;noquote@</property>
+<property name="focus">@page_focus;literal@</property>
 <property name="admin_navbar_label">admin_exchange_rates</property>
 
 <h2>@page_title@</h2>
 
-<table width="70%" cellspacing=2 cellpadding=2>
-<tr valign=top>
+<table width="70%" cellspacing="2" cellpadding="2">
+<tr valign="top">
 <td>
 <listtemplate name="active_currencies"></listtemplate>
 </td>
@@ -24,7 +24,7 @@
 		<form action="/intranet-exchange-rate/active-currencies-2" method=GET>
 		<%= [export_vars -form {return_url}] %>
 		<%= [im_currency_select -enabled_only_p 0 -currency_name "iso || ' - ' || currency_name" currency] %><br>
-		<input type=submit value="<%= [lang::message::lookup "" intranet-exchange-rate.Add_Active_Currency "Add Active Currency"] %>">
+		<input type="submit" value="<%= [lang::message::lookup "" intranet-exchange-rate.Add_Active_Currency "Add Active Currency"] %>">
 		</form>
 	</td>
 	</tr>
