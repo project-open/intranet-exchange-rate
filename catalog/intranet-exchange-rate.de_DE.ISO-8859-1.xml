@@ -2,7 +2,7 @@
 <message_catalog package_key="intranet-exchange-rate" locale="de_DE" charset="ISO-8859-1">
 
   <msg key="Active_currencies">Aktive Währungen</msg>
-  <msg key="Admin_Links">Administration</msg>
+  <msg key="Admin_Links">Admin</msg>
   <msg key="Automatic_Update_History">Historie Automatische Aktualisierungen</msg>
   <msg key="Automatic_Updates_Days">Intervall zwischen automatischen Aktualisierungen (Tage)</msg>
   <msg key="Automatic_Updates_Enabled_p">Automatische Aktualisierungen eingeschaltet?</msg>
