@@ -13,6 +13,7 @@
 
         <owner url="mailto:frank.bergmann@project-open.com">Frank Bergmann</owner>
         <summary>Allows to maintain and query currency exchange rates</summary>
+        <release-date>2016-11-15</release-date>
         <vendor url="http://www.project-open.com/">]project-open[</vendor>
         <description format="text/plain">
 	  The module allows to maintain and query currency exchange rates.
