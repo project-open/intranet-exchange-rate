@@ -72,7 +72,7 @@ set action_url "/intranet-exchange-rate/index"
 set form_mode "edit"
 
 set year_options [list]
-for {set i 1999} {$i <= 2018} {incr i} { lappend year_options [list $i $i] }
+for {set i 1999} {$i <= 2022} {incr i} { lappend year_options [list $i $i] }
 
 ad_form \
     -name $form_id \
