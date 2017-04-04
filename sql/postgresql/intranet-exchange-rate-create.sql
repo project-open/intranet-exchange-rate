@@ -98,7 +98,7 @@ end;$body$ language 'plpgsql';
 
 
 -- Compatibility version of fill_holes:
--- Fills holes for 2012 - 2017.
+-- Fills holes for 2013 - 2020.
 create or replace function im_exchange_rate_fill_holes (varchar)
 returns integer as $body$
 DECLARE
@@ -110,7 +110,7 @@ BEGIN
     RAISE NOTICE 'im_exchange_rate_fill_holes: cur=%', p_currency;
 
     v_max := 365 * 7;
-    v_start_date := to_date('2010-01-01', 'YYYY-MM-DD');
+    v_start_date := to_date('2013-01-01', 'YYYY-MM-DD');
     v_end_date = v_start_date + v_max;
 
     RETURN im_exchange_rate_fill_holes (p_currency, v_start_date, v_end_date);
