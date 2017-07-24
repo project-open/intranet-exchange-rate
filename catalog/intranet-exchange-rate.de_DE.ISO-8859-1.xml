@@ -2,11 +2,14 @@
 <message_catalog package_key="intranet-exchange-rate" locale="de_DE" charset="ISO-8859-1">
 
   <msg key="Active_currencies">Aktive Währungen</msg>
+  <msg key="Add_Active_Currency">Neue aktive Währung</msg>
+  <msg key="Add_Currencies">Neue Währung</msg>
   <msg key="Admin_Links">Admin</msg>
   <msg key="Automatic_Update_History">Historie Automatische Aktualisierungen</msg>
   <msg key="Automatic_Updates_Days">Intervall zwischen automatischen Aktualisierungen (Tage)</msg>
   <msg key="Automatic_Updates_Enabled_p">Automatische Aktualisierungen eingeschaltet?</msg>
   <msg key="Automatic_Updates_Status">Status Automatische Aktualisierungen</msg>
+  <msg key="Available_Currencies">Verfügbare Währungen</msg>
   <msg key="Button_Get_Exchange_Rates">Wechselkurse laden</msg>
   <msg key="Button_Get_Exchange_Rates_Now">Wechselkurse jetzt laden</msg>
   <msg key="Edit_Parameters">Parameter bearbeiten</msg>
@@ -29,5 +32,7 @@ Inbesondere akzeptieren Sie, dass ]project-open[ Business Solutions, S.L. keine 
   <msg key="Exchange_Rates">Wechselkurse</msg>
   <msg key="Filter_Rates">Wechselkurse filtern</msg>
   <msg key="Get_exchange_rates_for_today">Wechselkurse jetzt laden</msg>
+  <msg key="Immutable_Currencies">Unveränderbare Währungen</msg>
   <msg key="Last_Update">Letzte Aktualisierung</msg>
+  <msg key="Manage_Active_Currencies">Aktive Währungen verwalten</msg>
 </message_catalog>
