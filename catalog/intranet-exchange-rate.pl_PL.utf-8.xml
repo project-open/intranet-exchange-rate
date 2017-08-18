@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<message_catalog package_key="intranet-exchange-rate" package_version="3.4.0.7.0" locale="pl_PL" charset="utf-8">
+<message_catalog package_key="intranet-exchange-rate" locale="pl_PL" charset="utf-8">
 
+  <msg key="Active_currencies">Aktywne Waluty</msg>
+  <msg key="Add_Active_Currency">Dodaj Aktywną Walutę</msg>
+  <msg key="Add_Currencies">Dodaj Waluty</msg>
+  <msg key="Admin_Links">Linki Administratora</msg>
+  <msg key="Automatic_Update_History">Historia Automatycznej Aktualizacji</msg>
+  <msg key="Automatic_Updates_Days">Automatyczna Aktualizacja Co n Dni:</msg>
+  <msg key="Automatic_Updates_Enabled_p">Automatyczna Aktualizacja Włączona?</msg>
+  <msg key="Automatic_Updates_Status">Automatycznie Aktualizuj Status</msg>
+  <msg key="Button_Get_Exchange_Rates_Now">Pobierz Kursy Walut Teraz</msg>
+  <msg key="Edit_Parameters">Edycja Parametrów</msg>
+  <msg key="Exchange_ASUS_Disclaimer"></msg>
   <msg key="Exchange_Rate">Kurs wymiany waluty</msg>
   <msg key="Exchange_Rates">Kursy walut</msg>
+  <msg key="Filter_Rates">Filtr Kursów</msg>
+  <msg key="Last_Update">Ostatnia Aktualizacja</msg>
+  <msg key="Manage_Active_Currencies">Zarządzaj Aktywnymi Walutami</msg>
 </message_catalog>
