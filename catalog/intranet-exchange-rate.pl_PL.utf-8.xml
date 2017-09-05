@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <message_catalog package_key="intranet-exchange-rate" locale="pl_PL" charset="utf-8">
 
-  <msg key="Active_currencies">Aktywne Waluty</msg>
-  <msg key="Add_Active_Currency">Dodaj Aktywną Walutę</msg>
-  <msg key="Add_Currencies">Dodaj Waluty</msg>
-  <msg key="Admin_Links">Linki Administratora</msg>
-  <msg key="Automatic_Update_History">Historia Automatycznej Aktualizacji</msg>
-  <msg key="Automatic_Updates_Days">Automatyczna Aktualizacja Co n Dni:</msg>
-  <msg key="Automatic_Updates_Enabled_p">Automatyczna Aktualizacja Włączona?</msg>
-  <msg key="Automatic_Updates_Status">Automatycznie Aktualizuj Status</msg>
-  <msg key="Button_Get_Exchange_Rates_Now">Pobierz Kursy Walut Teraz</msg>
-  <msg key="Edit_Parameters">Edycja Parametrów</msg>
-  <msg key="Exchange_ASUS_Disclaimer"></msg>
+  <msg key="Active_currencies">Aktywne waluty</msg>
+  <msg key="Add_Active_Currency">Dodaj aktywną walutę</msg>
+  <msg key="Add_Currencies">Dodaj waluty</msg>
+  <msg key="Admin_Links">Linki administratora</msg>
+  <msg key="Automatic_Update_History">Historia automatycznej aktualizacji</msg>
+  <msg key="Automatic_Updates_Days">Automatyczna aktualizacja co n dni:</msg>
+  <msg key="Automatic_Updates_Enabled_p">Automatyczna aktualizacja włączona?</msg>
+  <msg key="Automatic_Updates_Status">Status automatycznej aktualizacji</msg>
+  <msg key="Available_Currencies">Dostępne waluty</msg>
+  <msg key="Button_Get_Exchange_Rates">Pobierz kursy walut</msg>
+  <msg key="Button_Get_Exchange_Rates_Now">Pobierz kursy walut teraz</msg>
+  <msg key="Edit_Parameters">Edycja parametrów</msg>
+  <msg key="Enable_Full_ASUS">Włącz pełny ASUS</msg>
+  <msg key="Exchange_ASUS_Disabled">Kursy ASUS wyłączone</msg>
+  <msg key="Exchange_ASUS_Disclaimer">&lt;p&gt;Ta usługa umożliwia automatyczne pobieranie danych z serwera z kursami.&lt;br/&gt;Przez wykorzystanie tej usługi akceptujesz, że dostarczamy ją &#34;tak jak jest&#34; i nie ponosimy żadnej odpowiedzialności za nieprawidłowe dane, czy konsekwencje ich użycia.&lt;/p&gt;</msg>
   <msg key="Exchange_Rate">Kurs wymiany waluty</msg>
   <msg key="Exchange_Rates">Kursy walut</msg>
-  <msg key="Filter_Rates">Filtr Kursów</msg>
-  <msg key="Last_Update">Ostatnia Aktualizacja</msg>
-  <msg key="Manage_Active_Currencies">Zarządzaj Aktywnymi Walutami</msg>
+  <msg key="Filter_Rates">Filtr kursów</msg>
+  <msg key="Get_exchange_rates_for_today">Pobierz dzisiejsze kursy walut</msg>
+  <msg key="Immutable_Currencies">Niezmienialne waluty</msg>
+  <msg key="Last_Update">Ostatnia aktualizacja</msg>
+  <msg key="Manage_Active_Currencies">Zarządzaj aktywnymi walutami</msg>
 </message_catalog>

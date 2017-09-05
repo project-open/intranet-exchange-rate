@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <message_catalog package_key="intranet-exchange-rate" locale="nl_NL" charset="ISO-8859-1">
 
+  <msg key="Active_currencies">Actieve Valuta</msg>
+  <msg key="Add_Active_Currency">Toevoegen actieve valuta</msg>
+  <msg key="Add_Currencies">Toevoegen valuta</msg>
+  <msg key="Automatic_Update_History">Automatische update historie</msg>
+  <msg key="Automatic_Updates_Status">Automatische update status</msg>
+  <msg key="Available_Currencies">Beschikbare valuta</msg>
+  <msg key="Button_Get_Exchange_Rates">Verkrijg wisselkoersen</msg>
+  <msg key="Button_Get_Exchange_Rates_Now">Verkrijg nu wisselkoersen</msg>
+  <msg key="Edit_Parameters">Edit Parameters</msg>
   <msg key="Exchange_Rate">Exchange Rate</msg>
   <msg key="Exchange_Rates">Exchange Rates</msg>
+  <msg key="Get_exchange_rates_for_today">Verkrijg actuele wisselkoersen</msg>
+  <msg key="Last_Update">Laatste Update</msg>
 </message_catalog>
