@@ -5,10 +5,10 @@
   <msg key="Add_Active_Currency">Neue aktive Währung</msg>
   <msg key="Add_Currencies">Neue Währung</msg>
   <msg key="Admin_Links">Admin</msg>
-  <msg key="Automatic_Update_History">Historie Automatische Aktualisierungen</msg>
+  <msg key="Automatic_Update_History">Historie der automatischen Aktualisierungen</msg>
   <msg key="Automatic_Updates_Days">Intervall zwischen automatischen Aktualisierungen (Tage)</msg>
   <msg key="Automatic_Updates_Enabled_p">Automatische Aktualisierungen eingeschaltet?</msg>
-  <msg key="Automatic_Updates_Status">Status Automatische Aktualisierungen</msg>
+  <msg key="Automatic_Updates_Status">Status der automatischen Aktualisierungen</msg>
   <msg key="Available_Currencies">Verfügbare Währungen</msg>
   <msg key="Button_Get_Exchange_Rates">Wechselkurse laden</msg>
   <msg key="Button_Get_Exchange_Rates_Now">Wechselkurse jetzt laden</msg>
@@ -19,11 +19,11 @@
 
 Dieser Service erlaubt es Ihnen, Wechselkurse automatisch von einem
 
-]project-open[ Server zu beziehen.&lt;br&gt;
+]project-open[-Server zu beziehen.&lt;br&gt;
 
-Wenn Sie diesen Service benutzen, dann stimmen Sie unseren ASUS Servicebedingungen zu.
+Wenn Sie diesen Service benutzen, dann stimmen Sie unseren ASUS-Servicebedingungen zu.
 
-Inbesondere akzeptieren Sie, dass ]project-open[ Business Solutions, S.L. keine Gewähr für die Korrektheit oder die Verfügbarkeit des Service übernimmt.
+Inbesondere akzeptieren Sie, dass ]project-open[ Business Solutions, S.L. keine Gewähr für die Korrektheit oder die Verfügbarkeit des Services übernimmt.
 
 &lt;/p&gt;
 
