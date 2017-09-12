@@ -6,9 +6,9 @@
   <msg key="Add_Currencies">Neue Währung</msg>
   <msg key="Admin_Links">Admin</msg>
   <msg key="Automatic_Update_History">Historie der automatischen Aktualisierungen</msg>
-  <msg key="Automatic_Updates_Days">Intervall zwischen automatischen Aktualisierungen (Tage)</msg>
-  <msg key="Automatic_Updates_Enabled_p">Automatische Aktualisierungen eingeschaltet?</msg>
-  <msg key="Automatic_Updates_Status">Status der automatischen Aktualisierungen</msg>
+  <msg key="Automatic_Updates_Days">Intervall zwischen automatischen Updates (Tage)</msg>
+  <msg key="Automatic_Updates_Enabled_p">Automatische Updates eingeschaltet?</msg>
+  <msg key="Automatic_Updates_Status">Status der automatischen Updates</msg>
   <msg key="Available_Currencies">Verfügbare Währungen</msg>
   <msg key="Button_Get_Exchange_Rates">Wechselkurse laden</msg>
   <msg key="Button_Get_Exchange_Rates_Now">Wechselkurse jetzt laden</msg>
