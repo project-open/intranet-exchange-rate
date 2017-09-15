@@ -14,7 +14,7 @@
   <msg key="Button_Get_Exchange_Rates_Now">Wechselkurse jetzt laden</msg>
   <msg key="Edit_Parameters">Parameter bearbeiten</msg>
   <msg key="Enable_Full_ASUS">ASUS einschalten</msg>
-  <msg key="Exchange_ASUS_Disabled">Wechselkurse ASUS ausgeschaltet</msg>
+  <msg key="Exchange_ASUS_Disabled">ASUS für Wechselkurse ausgeschaltet</msg>
   <msg key="Exchange_ASUS_Disclaimer">&lt;p&gt;
 
 Dieser Service erlaubt es Ihnen, Wechselkurse automatisch von einem
