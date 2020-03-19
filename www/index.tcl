@@ -40,7 +40,7 @@ if {"" == $year} {
 # ------------------------------------------------------------------
 
 set supported_currencies [im_supported_currencies]
-set missing_text "<strong>No packages match criteria.</strong>"
+set missing_text "<strong><nobr>No Exchange Rates match criteria.</nobr></strong>"
 set use_watches_p [expr ! [im_parameter -package_id [ad_acs_kernel_id] PerformanceModeP request-processor 1]]
 set return_url "[ad_conn url]?[ad_conn query]"
 
@@ -72,7 +72,7 @@ set action_url "/intranet-exchange-rate/index"
 set form_mode "edit"
 
 set year_options [list]
-for {set i 1999} {$i <= 2022} {incr i} { lappend year_options [list $i $i] }
+for {set i 2010} {$i <= 2025} {incr i} { lappend year_options [list $i $i] }
 
 ad_form \
     -name $form_id \
