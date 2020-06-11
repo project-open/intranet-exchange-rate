@@ -4,14 +4,28 @@
   <msg key="Active_currencies">Actieve Valuta</msg>
   <msg key="Add_Active_Currency">Toevoegen actieve valuta</msg>
   <msg key="Add_Currencies">Toevoegen valuta</msg>
+  <msg key="Admin_Links">Beheer Links</msg>
   <msg key="Automatic_Update_History">Automatische update historie</msg>
+  <msg key="Automatic_Updates_Days">Dagelijkse automatische updates</msg>
+  <msg key="Automatic_Updates_Enabled_p">Automatische updates ingeschakeld</msg>
   <msg key="Automatic_Updates_Status">Automatische update status</msg>
   <msg key="Available_Currencies">Beschikbare valuta</msg>
   <msg key="Button_Get_Exchange_Rates">Verkrijg wisselkoersen</msg>
   <msg key="Button_Get_Exchange_Rates_Now">Verkrijg nu wisselkoersen</msg>
   <msg key="Edit_Parameters">Edit Parameters</msg>
+  <msg key="Enable_Full_ASUS">Enable volledige ASUS</msg>
+  <msg key="Exchange_ASUS_Disabled">Exchange ASUS uitgeschakelt</msg>
+  <msg key="Exchange_ASUS_Disclaimer">&lt;p&gt;
+
+Met deze service kunt u automatische updates van wisselkoersen van onze wisselkoersserver verkrijgen.&lt;br&gt; Door het gebruik van deze service accepteert u dat we deze service aanbieden &#39;as is&#39; en we geen enkele verantwoordelijkheid aanvaarden voor onjuiste data en de consequenties hiervan.
+&lt;/p&gt;
+
+</msg>
   <msg key="Exchange_Rate">Exchange Rate</msg>
-  <msg key="Exchange_Rates">Exchange Rates</msg>
+  <msg key="Exchange_Rates">Wisselkoersen</msg>
+  <msg key="Filter_Rates">Filter Koersen</msg>
   <msg key="Get_exchange_rates_for_today">Verkrijg actuele wisselkoersen</msg>
+  <msg key="Immutable_Currencies">Onveranderde koersen</msg>
   <msg key="Last_Update">Laatste Update</msg>
+  <msg key="Manage_Active_Currencies">Manage Actieve munteenheden</msg>
 </message_catalog>
