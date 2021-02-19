@@ -3,7 +3,7 @@
 # Copyright (C) 2003-2008 ]project-open[
 #
 # All rights reserved. Please check
-# http://www.project-open.com/license/ for details.
+# https://www.project-open.com/license/ for details.
 
 ad_page_contract {
     @author Frank Bergmann frank.bergmann@project-open.com
@@ -106,7 +106,7 @@ set left_navbar_html "
       <hr/>
 "
 
-set currency_url [parameter::get_from_package_key -package_key "intranet-exchange-rate" -parameter "ExchangeRateUrlXRates" -default "http://www.x-rates.com/d/USD/table.html"]
+set currency_url [parameter::get_from_package_key -package_key "intranet-exchange-rate" -parameter "ExchangeRateUrlXRates" -default "https://www.x-rates.com/d/USD/table.html"]
 
 set admin_html "
 	<ul>
