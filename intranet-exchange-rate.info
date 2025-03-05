@@ -8,7 +8,7 @@
     <singleton-p>t</singleton-p>
     <auto-mount>intranet-exchange-rate</auto-mount>
 
-    <version name="5.2.0.0.1" url="https://www.project-open.net/download/apm/intranet-exchange-rate-5.2.0.0.1.apm">
+    <version name="5.2.0.0.2" url="https://www.project-open.net/download/apm/intranet-exchange-rate-5.2.0.0.2.apm">
 
         <owner url="mailto:frank.bergmann@project-open.com">Frank Bergmann</owner>
         <summary>Allows to maintain and query currency exchange rates</summary>
